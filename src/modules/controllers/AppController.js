@@ -1,6 +1,10 @@
-const AppController = () => {
-    const init = () => {
+import ScreenController from "./ScreenController";
 
+const AppController = () => {
+    const screenController = ScreenController();
+
+    const init = () => {
+        screenController.init();
     };
 
     const getWeather = async ({location}) => {
