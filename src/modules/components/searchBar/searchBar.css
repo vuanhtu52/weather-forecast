@@ -1,0 +1,25 @@
+.search-bar {
+    display: flex;
+    gap: 5px;
+    height: 30px;
+    background-color: #71717a;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+.search-bar .map-icon {
+    height: 100%;
+}
+
+.search-bar input {
+    flex-grow: 1;
+    background-color: transparent;
+    border: none;
+    color: white;
+    outline: none;
+}
+
+.search-bar .search-icon {
+    height: 100%;
+}
+

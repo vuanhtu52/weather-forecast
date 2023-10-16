@@ -8,4 +8,12 @@
 body {
     margin: 0;
     padding: 0;
+    display: grid;
+    grid-template-columns: 2fr 3fr;
+    background-color: #27272a;
+    color: white;
+}
+
+.left-section {
+    padding: 20px;
 }
