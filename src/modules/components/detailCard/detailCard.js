@@ -1,9 +1,9 @@
-import "./detailBoard.css";
+import "./detailCard.css";
 
-const createDetailBoard = ({iconLink, title, content}) => {
-    // Add detail board
-    const detailBoard = document.createElement("div");
-    detailBoard.className = "detail-board";
+const createDetailCard = ({iconLink, title, content}) => {
+    // Add detail card
+    const detailCard = document.createElement("div");
+    detailCard.className = "detail-card";
 
     // Add header
     const header = document.createElement("div");
@@ -18,15 +18,15 @@ const createDetailBoard = ({iconLink, title, content}) => {
     titleDiv.textContent = title;
     header.appendChild(titleDiv);
 
-    detailBoard.appendChild(header);
+    detailCard.appendChild(header);
 
     // Add content
     const contentDiv = document.createElement("div");
     contentDiv.className = "content";
     contentDiv.textContent = content;
-    detailBoard.appendChild(contentDiv);
+    detailCard.appendChild(contentDiv);
 
-    return detailBoard;
+    return detailCard;
 };
 
-export default createDetailBoard;
+export default createDetailCard;

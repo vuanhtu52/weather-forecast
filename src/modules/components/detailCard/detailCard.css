@@ -1,4 +1,4 @@
-.detail-board {
+.detail-card {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -8,19 +8,19 @@
     border-radius: 10px;
 }
 
-.detail-board .header {
+.detail-card .header {
     display: flex;
     align-items: center;
     gap: 5px;
     color: #64748b;
 }
 
-.detail-board .icon {
+.detail-card .icon {
     width: 20px;
     height: 20px;
 }
 
-.detail-board .content {
+.detail-card .content {
     font-size: 30px;
     flex-grow: 1;
     display: flex;

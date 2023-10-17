@@ -1,9 +1,9 @@
-import createDetailBoard from "../detailBoard/detailBoard";
 import "./todayBoard.css";
 import ThermometerIconLink from "../../../assets/thermometer.svg";
 import PrecipitationIconLink from "../../../assets/precipitation.svg";
 import VisibilityIconLink from "../../../assets/visibility.svg";
 import HumidityIconLink from "../../../assets/humidity.svg";
+import createDetailCard from "../detailCard/detailCard";
 
 const createTodayBoard = () => {
     // Create board
@@ -51,17 +51,17 @@ const createTodayBoard = () => {
     const detailDisplay = document.createElement("div");
     detailDisplay.className = "detail-display";
 
-    const feelsLikeBoard = createDetailBoard({iconLink: ThermometerIconLink, title: "FEELS LIKE", content: "30°"});
-    detailDisplay.appendChild(feelsLikeBoard);
+    const feelsLikeCard = createDetailCard({iconLink: ThermometerIconLink, title: "FEELS LIKE", content: "30°"});
+    detailDisplay.appendChild(feelsLikeCard);
 
-    const precipitationBoard = createDetailBoard({iconLink: PrecipitationIconLink, title: "PRECIPITATION", content: "20 mm"});
-    detailDisplay.appendChild(precipitationBoard);
+    const precipitationCard = createDetailCard({iconLink: PrecipitationIconLink, title: "PRECIPITATION", content: "20 mm"});
+    detailDisplay.appendChild(precipitationCard);
 
-    const visibilityBoard = createDetailBoard({iconLink: VisibilityIconLink, title: "VISIBILITY", content: "5 km"});
-    detailDisplay.appendChild(visibilityBoard);
+    const visibilityCard = createDetailCard({iconLink: VisibilityIconLink, title: "VISIBILITY", content: "5 km"});
+    detailDisplay.appendChild(visibilityCard);
 
-    const humidityBoard = createDetailBoard({iconLink: HumidityIconLink, title: "HUMIDITY", content: "82%"});
-    detailDisplay.appendChild(humidityBoard);
+    const humidityCard = createDetailCard({iconLink: HumidityIconLink, title: "HUMIDITY", content: "82%"});
+    detailDisplay.appendChild(humidityCard);
 
     todayBoard.appendChild(detailDisplay);
 
