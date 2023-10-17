@@ -3,4 +3,5 @@ import AppController from "./modules/controllers/AppController";
 
 const appController = AppController();
 appController.init();
-// appController.getWeather({location: "ho chi minh"});
+// appController.getTodayWeather({location: "ho chi minh"});
+// appController.getForecast({location: "ho chi minh"});
