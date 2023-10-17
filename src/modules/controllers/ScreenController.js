@@ -1,5 +1,6 @@
 import LogoIconLink from "../../assets/logo.svg";
 import createSearchBar from "../components/searchBar/searchBar";
+import createTodayBoard from "../components/todayBoard/todayBoard";
 
 const ScreenController = () => {
     const init = () => {
@@ -17,6 +18,10 @@ const ScreenController = () => {
         // Add search bar
         const searchBar = createSearchBar();
         leftSection.appendChild(searchBar);
+
+        // Add today board
+        const todayBoard = createTodayBoard();
+        leftSection.appendChild(todayBoard);
 
         document.body.appendChild(leftSection);
 

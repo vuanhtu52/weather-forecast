@@ -1,0 +1,29 @@
+.detail-board {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: #27272a;
+    padding: 10px;
+    height: 130px;
+    border-radius: 10px;
+}
+
+.detail-board .header {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #64748b;
+}
+
+.detail-board .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.detail-board .content {
+    font-size: 30px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

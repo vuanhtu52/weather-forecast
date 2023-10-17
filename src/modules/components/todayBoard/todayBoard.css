@@ -1,0 +1,62 @@
+.today-board {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    background-color: #18181b;
+    padding: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+
+.today-board .temp-buttons {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.today-board .c-button, .today-board .f-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.today-board .c-button:hover, .today-board .f-button:hover {
+    background-color: #71717a;
+    color: white;
+}
+
+.today-board .c-button.button-active, .today-board .f-button.button-active {
+    background-color: #71717a;
+}
+
+.today-board .main-display {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    gap: 10px;
+}
+
+.today-board .main-display .city {
+    font-size: 25px;
+}
+
+.today-board .main-display .temp {
+    font-size: 40px;
+}
+
+.today-board .main-display .condition {
+    font-size: 20px;
+    color: #d1d5db;
+}
+
+.today-board .detail-display {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: max-content max-content;
+    gap: 20px;
+    flex-grow: 1;
+    justify-self: flex-end;
+}

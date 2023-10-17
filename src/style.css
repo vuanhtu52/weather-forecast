@@ -9,11 +9,19 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 2fr 3fr;
+    grid-template-columns: 1fr 2fr;
     background-color: #27272a;
     color: white;
+    height: 100vh;
 }
 
 .left-section {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right-section {
     padding: 20px;
 }
