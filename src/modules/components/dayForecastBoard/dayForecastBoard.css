@@ -1,0 +1,28 @@
+.day-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #18181b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.day-board .header {
+    display: flex;
+    gap: 10px;
+    color: #64748b;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid grey;
+}
+
+.day-board .header .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.day-board .cards {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    overflow-x: auto;
+}

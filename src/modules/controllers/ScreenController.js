@@ -1,4 +1,5 @@
 import LogoIconLink from "../../assets/logo.svg";
+import createDayForecastBoard from "../components/dayForecastBoard/dayForecastBoard";
 import createHourForecastBoard from "../components/hourForecastBoard/hourForecastBoard";
 import createSearchBar from "../components/searchBar/searchBar";
 import createTodayBoard from "../components/todayBoard/todayBoard";
@@ -33,6 +34,10 @@ const ScreenController = () => {
         // Add hourly forecast board
         const hourForecastBoard = createHourForecastBoard();
         rightSection.appendChild(hourForecastBoard);
+
+        // Add 14-day forecast board
+        const dayForecastBoard = createDayForecastBoard();
+        rightSection.appendChild(dayForecastBoard);
 
         document.body.appendChild(rightSection);
     };
