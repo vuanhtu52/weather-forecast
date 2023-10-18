@@ -1,0 +1,23 @@
+.hour-card {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.hour-card .time {
+    font-size: 12px;
+}
+
+.hour-card .temp {
+    font-size: 30px;
+}
+
+.hour-card-active {
+    background-color: rgba(245, 245, 245, 0.1);
+}
+

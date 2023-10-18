@@ -9,10 +9,11 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr minmax(500px, 2fr);
     background-color: #27272a;
     color: white;
     height: 100vh;
+    font-family: Georgia, serif;
 }
 
 .left-section {
@@ -25,3 +26,29 @@ body {
 .right-section {
     padding: 20px;
 }
+
+/* SCROLL BAR */
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+    height: 5px;
+}
+  
+/* Track */
+::-webkit-scrollbar-track {
+    background: grey;
+    border-radius: 5px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: white;
+}
+

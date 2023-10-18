@@ -1,0 +1,28 @@
+.hour-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #18181b;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.hour-board .header {
+    display: flex;
+    gap: 10px;
+    color: #64748b;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid grey;
+}
+
+.hour-board .header .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.hour-board .cards {
+    display: flex;
+    gap: 40px;
+    width: 100%;
+    overflow-x: auto;
+}

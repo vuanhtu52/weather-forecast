@@ -25,13 +25,13 @@ const AppController = () => {
         } catch {
             console.log("Something went wrong");
         }
-    }
+    };
 
     return {
         init,
         getTodayWeather,
         getForecast,
-    }
+    };
 }
 
 export default AppController;
