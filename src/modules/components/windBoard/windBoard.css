@@ -1,0 +1,70 @@
+.wind-board {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background-color: #18181b;
+    padding: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+
+.wind-board .header {
+    display: flex;
+    gap: 10px;
+    color: #64748b;
+    align-self: flex-start;
+}
+
+.wind-board .header .icon {
+    width: 20px;
+    height: 20px;
+} 
+
+.wind-board .content {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wind-board .content .speed {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content max-content;
+    gap: 5px;
+}
+
+.wind-board .content .speed .value {
+    grid-row: 1 / 3;
+    font-size: 30px;
+}
+
+.wind-board .content .speed .unit {
+    color: #64748b;
+}
+
+.wind-board .content hr {
+    width: 80%;
+    border: 0.5px solid #64748b;
+}
+
+.wind-board .content .gust {
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-rows: max-content max-content;
+    gap: 5px;
+}
+
+.wind-board .content .gust .value {
+    grid-row: 1 / 3;
+    font-size: 30px;
+}
+
+.wind-board .content .gust .unit {
+    color: #64748b;
+}
+

@@ -1,0 +1,40 @@
+.uv-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #18181b;
+    padding: 20px;
+    border-radius: 10px;
+    flex-grow: 1;
+}
+
+.uv-board .header {
+    display: flex;
+    gap: 10px;
+    color: #64748b;
+}
+
+.uv-board .header .icon {
+    width: 20px;
+    height: 20px;
+}
+
+.uv-board .content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.uv-board .content .value {
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.uv-board .content .level {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

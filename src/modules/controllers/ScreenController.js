@@ -3,6 +3,8 @@ import createDayForecastBoard from "../components/dayForecastBoard/dayForecastBo
 import createHourForecastBoard from "../components/hourForecastBoard/hourForecastBoard";
 import createSearchBar from "../components/searchBar/searchBar";
 import createTodayBoard from "../components/todayBoard/todayBoard";
+import createUVBoard from "../components/uvBoard/uvBoard";
+import createWindBoard from "../components/windBoard/windBoard";
 
 const ScreenController = () => {
     const init = () => {
@@ -38,6 +40,19 @@ const ScreenController = () => {
         // Add 14-day forecast board
         const dayForecastBoard = createDayForecastBoard();
         rightSection.appendChild(dayForecastBoard);
+
+        // Add uv board
+        const extraBoards = document.createElement("div");
+        extraBoards.className = "extra-boards";
+
+        const uvBoard = createUVBoard();
+        extraBoards.appendChild(uvBoard);
+
+        // Add wind board
+        const windBoard = createWindBoard();
+        extraBoards.appendChild(windBoard);
+
+        rightSection.appendChild(extraBoards);
 
         document.body.appendChild(rightSection);
     };
