@@ -81,10 +81,64 @@ const ScreenController = () => {
                     const realTimeData = await apiController.getRealTimeData({location: input.value.trim()});
                     if (realTimeData === null || realTimeData.hasOwnProperty("error")) {
                         errorSpan.textContent = "Cannot find location."
+                    } else {
+                        _populateRealTimeData({data: realTimeData});
                     }
                 }
             }
         });
+    }; 
+
+    const _populateRealTimeData = ({data}) => {
+        console.log(data);
+        // Populate data in today's board
+        const cityDiv = document.querySelector(".today-board .main-display .city");
+        cityDiv.textContent = data.location.name;
+
+        const tempDiv = document.querySelector(".today-board .main-display .temp");
+        tempDiv.textContent = `${data.current.temp_c}°`;
+
+        const conditionDiv = document.querySelector(".today-board .main-display .condition");
+        conditionDiv.textContent = data.current.condition.text;
+
+        const imageDiv = document.querySelector(".today-board .main-display .image");
+        imageDiv.src = data.imageURL;
+
+        const feelsLikeDiv = document.querySelector(".today-board .detail-card:first-child .content");
+        feelsLikeDiv.textContent = `${data.current.feelslike_c}°`;
+
+        const precipitationDiv = document.querySelector(".today-board .detail-card:nth-child(2) .content");
+        precipitationDiv.textContent = `${data.current.precip_mm} mm`;
+
+        const visibilityDiv = document.querySelector(".today-board .detail-card:nth-child(3) .content");
+        visibilityDiv.textContent = `${data.current.vis_km} km`;
+
+        const humidityDiv = document.querySelector(".today-board .detail-card:nth-child(4) .content");
+        humidityDiv.textContent = `${data.current.humidity}%`;
+
+        // Populate data in UV board
+        const uvValueDiv = document.querySelector(".uv-board .content .value");
+        uvValueDiv.textContent = data.current.uv;
+
+        const uvLevelDiv = document.querySelector(".uv-board .content .level");
+        if (0 <= data.current.uv && data.current.uv <= 2) {
+            uvLevelDiv.textContent = "Low";
+        } else if (3 <= data.current.uv && data.current.uv <= 5) {
+            uvLevelDiv.textContent = "Moderate";
+        } else if (6 <= data.current.uv && data.current.uv <= 7) {
+            uvLevelDiv.textContent = "High";
+        } else if (8 <= data.current.uv && data.current.uv <= 10) {
+            uvLevelDiv.textContent = "Very High";
+        } else {
+            uvLevelDiv.textContent = "Extreme";
+        } 
+
+        // Populate data in wind board
+        const windDiv = document.querySelector(".wind-board .speed .value");
+        windDiv.textContent = data.current.wind_kph;
+
+        const gustDiv = document.querySelector(".wind-board .gust .value");
+        gustDiv.textContent = data.current.gust_kph;
     };
 
     return {

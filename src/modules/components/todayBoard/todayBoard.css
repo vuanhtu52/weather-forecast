@@ -52,6 +52,12 @@
     color: #d1d5db;
 }
 
+.today-board .main-display .image {
+    width: 100px;
+    height: 100px;
+    border: 0;
+}
+
 .today-board .detail-display {
     display: grid;
     grid-template-columns: 1fr 1fr;

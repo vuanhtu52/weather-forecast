@@ -45,6 +45,11 @@ const createTodayBoard = () => {
     conditionDisplay.textContent = "Rainy Day";
     mainDisplay.appendChild(conditionDisplay);
 
+    const imageDisplay = document.createElement("img");
+    imageDisplay.className = "image";
+    imageDisplay.src = "";
+    mainDisplay.appendChild(imageDisplay);
+
     todayBoard.appendChild(mainDisplay);
 
     // Add detail display

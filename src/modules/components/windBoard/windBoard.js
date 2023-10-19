@@ -36,7 +36,7 @@ const createWindBoard = () => {
 
     const unitDiv = document.createElement("div");
     unitDiv.className = "unit";
-    unitDiv.textContent = "KMH";
+    unitDiv.textContent = "KPH";
     speedDiv.appendChild(unitDiv);
 
     const descriptionDiv = document.createElement("div");
