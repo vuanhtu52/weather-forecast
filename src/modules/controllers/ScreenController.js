@@ -10,7 +10,7 @@ import ApiController from "./ApiController";
 const ScreenController = () => {
     const apiController = ApiController();
 
-    const init = () => {
+    const init = async () => {
         // Add favicon
         const link = document.createElement("link");
         link.rel = "icon";
@@ -66,7 +66,15 @@ const ScreenController = () => {
 
         // Attach listeners
         _handleInputPressEnter();
-    }; 
+
+        // Fetch data for the first time
+        const data = await apiController.getData({ location: "Ho Chi Minh City" });
+        if (data === null || data.hasOwnProperty("error")) {
+            errorSpan.textContent = "Cannot find location."
+        } else {
+            _populateData({ data: data });
+        }
+    };
 
     // Detect when user presses enter in search bar
     const _handleInputPressEnter = async () => {
@@ -78,18 +86,18 @@ const ScreenController = () => {
                 if (input.value.trim() === "") {
                     errorSpan.textContent = "Please enter a valid city's name.";
                 } else {
-                    const realTimeData = await apiController.getRealTimeData({location: input.value.trim()});
-                    if (realTimeData === null || realTimeData.hasOwnProperty("error")) {
+                    const data = await apiController.getData({ location: input.value.trim() });
+                    if (data === null || data.hasOwnProperty("error")) {
                         errorSpan.textContent = "Cannot find location."
                     } else {
-                        _populateRealTimeData({data: realTimeData});
+                        _populateData({ data: data });
                     }
                 }
             }
         });
-    }; 
+    };
 
-    const _populateRealTimeData = ({data}) => {
+    const _populateData = ({ data }) => {
         console.log(data);
         // Populate data in today's board
         const cityDiv = document.querySelector(".today-board .main-display .city");
@@ -102,7 +110,7 @@ const ScreenController = () => {
         conditionDiv.textContent = data.current.condition.text;
 
         const imageDiv = document.querySelector(".today-board .main-display .image");
-        imageDiv.src = data.imageURL;
+        imageDiv.src = data.current.imageURL;
 
         const feelsLikeDiv = document.querySelector(".today-board .detail-card:first-child .content");
         feelsLikeDiv.textContent = `${data.current.feelslike_c}°`;
@@ -131,7 +139,7 @@ const ScreenController = () => {
             uvLevelDiv.textContent = "Very High";
         } else {
             uvLevelDiv.textContent = "Extreme";
-        } 
+        }
 
         // Populate data in wind board
         const windDiv = document.querySelector(".wind-board .speed .value");
@@ -139,6 +147,8 @@ const ScreenController = () => {
 
         const gustDiv = document.querySelector(".wind-board .gust .value");
         gustDiv.textContent = data.current.gust_kph;
+
+        // Populate data in hourly forecast board
     };
 
     return {

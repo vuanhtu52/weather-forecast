@@ -27,12 +27,10 @@ const createUVBoard = () => {
 
     const value = document.createElement("div");
     value.className = "value";
-    value.textContent = "3";
     content.appendChild(value);
 
     const level = document.createElement("div");
     level.className = "level";
-    level.textContent = "Moderate";
     content.appendChild(level);
 
     board.appendChild(content);

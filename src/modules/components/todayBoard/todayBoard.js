@@ -32,22 +32,18 @@ const createTodayBoard = () => {
 
     const cityDisplay = document.createElement("div");
     cityDisplay.className = "city";
-    cityDisplay.textContent = "Ho Chi Minh";
     mainDisplay.appendChild(cityDisplay);
 
     const tempDisplay = document.createElement("div");
     tempDisplay.className = "temp";
-    tempDisplay.textContent = "28°";
     mainDisplay.appendChild(tempDisplay);
 
     const conditionDisplay = document.createElement("div");
     conditionDisplay.className = "condition";
-    conditionDisplay.textContent = "Rainy Day";
     mainDisplay.appendChild(conditionDisplay);
 
     const imageDisplay = document.createElement("img");
     imageDisplay.className = "image";
-    imageDisplay.src = "";
     mainDisplay.appendChild(imageDisplay);
 
     todayBoard.appendChild(mainDisplay);
@@ -56,16 +52,16 @@ const createTodayBoard = () => {
     const detailDisplay = document.createElement("div");
     detailDisplay.className = "detail-display";
 
-    const feelsLikeCard = createDetailCard({iconLink: ThermometerIconLink, title: "FEELS LIKE", content: "30°"});
+    const feelsLikeCard = createDetailCard({iconLink: ThermometerIconLink, title: "FEELS LIKE", content: ""});
     detailDisplay.appendChild(feelsLikeCard);
 
-    const precipitationCard = createDetailCard({iconLink: PrecipitationIconLink, title: "PRECIPITATION", content: "20 mm"});
+    const precipitationCard = createDetailCard({iconLink: PrecipitationIconLink, title: "PRECIPITATION", content: ""});
     detailDisplay.appendChild(precipitationCard);
 
-    const visibilityCard = createDetailCard({iconLink: VisibilityIconLink, title: "VISIBILITY", content: "5 km"});
+    const visibilityCard = createDetailCard({iconLink: VisibilityIconLink, title: "VISIBILITY", content: ""});
     detailDisplay.appendChild(visibilityCard);
 
-    const humidityCard = createDetailCard({iconLink: HumidityIconLink, title: "HUMIDITY", content: "82%"});
+    const humidityCard = createDetailCard({iconLink: HumidityIconLink, title: "HUMIDITY", content: ""});
     detailDisplay.appendChild(humidityCard);
 
     todayBoard.appendChild(detailDisplay);

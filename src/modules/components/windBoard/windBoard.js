@@ -31,7 +31,6 @@ const createWindBoard = () => {
 
     const valueDiv = document.createElement("div");
     valueDiv.className = "value";
-    valueDiv.textContent = "3";
     speedDiv.appendChild(valueDiv);
 
     const unitDiv = document.createElement("div");
@@ -55,7 +54,6 @@ const createWindBoard = () => {
 
     const gustValueDiv = document.createElement("div");
     gustValueDiv.className = "value";
-    gustValueDiv.textContent = "9";
     gustDiv.appendChild(gustValueDiv);
 
     const gustUnitDiv = document.createElement("div");
