@@ -1,7 +1,9 @@
 import "./style.css";
-import AppController from "./modules/controllers/AppController";
+import ApiController from "./modules/controllers/ApiController";
+import ScreenController from "./modules/controllers/ScreenController";
 
-const appController = AppController();
-appController.init();
-// appController.getTodayWeather({location: "ho chi minh"});
-// appController.getForecast({location: "ho chi minh"});
+const screenController = ScreenController();
+screenController.init();
+
+// const apiController = ApiController();
+// apiController.getRealTimeData({location: "ho chi minh"});

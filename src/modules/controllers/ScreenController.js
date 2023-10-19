@@ -5,8 +5,11 @@ import createSearchBar from "../components/searchBar/searchBar";
 import createTodayBoard from "../components/todayBoard/todayBoard";
 import createUVBoard from "../components/uvBoard/uvBoard";
 import createWindBoard from "../components/windBoard/windBoard";
+import ApiController from "./ApiController";
 
 const ScreenController = () => {
+    const apiController = ApiController();
+
     const init = () => {
         // Add favicon
         const link = document.createElement("link");
@@ -22,6 +25,11 @@ const ScreenController = () => {
         // Add search bar
         const searchBar = createSearchBar();
         leftSection.appendChild(searchBar);
+
+        // Add span for error message
+        const errorSpan = document.createElement("span");
+        errorSpan.className = "error-span";
+        leftSection.appendChild(errorSpan);
 
         // Add today board
         const todayBoard = createTodayBoard();
@@ -55,6 +63,28 @@ const ScreenController = () => {
         rightSection.appendChild(extraBoards);
 
         document.body.appendChild(rightSection);
+
+        // Attach listeners
+        _handleInputPressEnter();
+    }; 
+
+    // Detect when user presses enter in search bar
+    const _handleInputPressEnter = async () => {
+        const input = document.querySelector(".search-bar input");
+        const errorSpan = document.querySelector(".error-span");
+        input.addEventListener("keyup", async (event) => {
+            if (event.keyCode === 13) {
+                errorSpan.textContent = "";
+                if (input.value.trim() === "") {
+                    errorSpan.textContent = "Please enter a valid city's name.";
+                } else {
+                    const realTimeData = await apiController.getRealTimeData({location: input.value.trim()});
+                    if (realTimeData === null || realTimeData.hasOwnProperty("error")) {
+                        errorSpan.textContent = "Cannot find location."
+                    }
+                }
+            }
+        });
     };
 
     return {

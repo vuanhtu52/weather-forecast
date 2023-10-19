@@ -23,6 +23,11 @@ body {
     gap: 20px;
 }
 
+.left-section .error-span {
+    height: 14px;
+    font-size: 14px;
+}
+
 .right-section {
     padding: 20px;
     display: flex;
