@@ -17,6 +17,11 @@
     font-size: 30px;
 }
 
+.hour-card img {
+    width: 70px;
+    height: 70px;
+}
+
 .hour-card-active {
     background-color: rgba(245, 245, 245, 0.1);
 }

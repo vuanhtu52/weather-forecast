@@ -1,6 +1,7 @@
 import LogoIconLink from "../../assets/logo.svg";
 import createDayForecastBoard from "../components/dayForecastBoard/dayForecastBoard";
 import createHourForecastBoard from "../components/hourForecastBoard/hourForecastBoard";
+import createHourForecastCard from "../components/hourForecastCard/hourForecastCard";
 import createSearchBar from "../components/searchBar/searchBar";
 import createTodayBoard from "../components/todayBoard/todayBoard";
 import createUVBoard from "../components/uvBoard/uvBoard";
@@ -110,7 +111,16 @@ const ScreenController = () => {
         conditionDiv.textContent = data.current.condition.text;
 
         const imageDiv = document.querySelector(".today-board .main-display .image");
-        imageDiv.src = data.current.imageURL;
+        let imagePromise = fetch("https://" + data.current.condition.icon.substring(2));
+        imagePromise
+            .then(response => response.blob())
+            .then(imageData => {
+                const imageURL = URL.createObjectURL(imageData);
+                imageDiv.src = imageURL;
+            })
+            .catch(err => {
+                console.log("Cannot fetch image: " + err);
+            });
 
         const feelsLikeDiv = document.querySelector(".today-board .detail-card:first-child .content");
         feelsLikeDiv.textContent = `${data.current.feelslike_c}°`;
@@ -149,6 +159,32 @@ const ScreenController = () => {
         gustDiv.textContent = data.current.gust_kph;
 
         // Populate data in hourly forecast board
+        const hourCardsWrapper = document.querySelector(".hour-board .cards");
+        while (hourCardsWrapper.lastChild) {
+            hourCardsWrapper.removeChild(hourCardsWrapper.lastChild);
+        }
+        const currentTime = new Date();
+
+        // Add the card for current time
+        const nowHourCard = createHourForecastCard({ hour: "Now", temp: data.current.temp_c, imageURL: data.current.condition.icon });
+        nowHourCard.classList.add("hour-card-active");
+        hourCardsWrapper.appendChild(nowHourCard);
+
+        // Add the cards for the remaining hours of the day
+        for (let i = currentTime.getHours() + 1; i < 24; i++) {
+            const hourData = data.forecast.forecastday["0"].hour[i.toString()];
+            const card = createHourForecastCard({ hour: hourData.time.split(" ")[1], temp: hourData.temp_c, imageURL: hourData.condition.icon });
+            hourCardsWrapper.appendChild(card);
+        }
+
+        // Add the cards for the next day's hours until the total number of cards = 24
+        const numOfRemainingCards = 24 - hourCardsWrapper.childElementCount;
+        console.log(numOfRemainingCards);
+        for (let i = 0; i < numOfRemainingCards; i++) {
+            const hourData = data.forecast.forecastday["1"].hour[i.toString()];
+            const card = createHourForecastCard({ hour: hourData.time.split(" ")[1], temp: hourData.temp_c, imageURL: hourData.condition.icon });
+            hourCardsWrapper.appendChild(card);
+        }
     };
 
     return {
