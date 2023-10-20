@@ -1,7 +1,7 @@
 import "./hourForecastCard.css";
 import HumidityIconLink from "../../../assets/humidity.svg";
 
-const createHourForecastCard = ({hour, temp, imageURL}) => {
+const createHourForecastCard = ({hour, tempC, tempF, degreeUnit, imageURL}) => {
     // Add card
     const card = document.createElement("div");
     card.className = "hour-card";
@@ -15,7 +15,13 @@ const createHourForecastCard = ({hour, temp, imageURL}) => {
     // Add temperature
     const tempDiv = document.createElement("div");
     tempDiv.className = "temp";
-    tempDiv.textContent = temp + "°";
+    tempDiv.tempC = tempC;
+    tempDiv.tempF = tempF;
+    if (degreeUnit === "c") {
+        tempDiv.textContent = tempC + "°";
+    } else {
+        tempDiv.textContent = tempF + "°";
+    }
     card.appendChild(tempDiv);
 
     // Add icon

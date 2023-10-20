@@ -1,7 +1,7 @@
 import "./dayForecastCard.css";
 import HumidityIconLink from "../../../assets/humidity.svg";
 
-const createDayForecastCard = ({ dateString, temp, imageURL }) => {
+const createDayForecastCard = ({ dateString, tempC, tempF, degreeUnit, imageURL }) => {
     // Add card
     const card = document.createElement("div");
     card.className = "day-card";
@@ -28,7 +28,13 @@ const createDayForecastCard = ({ dateString, temp, imageURL }) => {
     // Add temperature
     const tempDiv = document.createElement("div");
     tempDiv.className = "temp";
-    tempDiv.textContent = temp + "°";
+    tempDiv.tempC = tempC;
+    tempDiv.tempF = tempF;
+    if (degreeUnit === "c") {
+        tempDiv.textContent = tempC + "°";
+    } else {
+        tempDiv.textContent = tempF + "°";
+    }
     card.appendChild(tempDiv);
 
     // Add icon
