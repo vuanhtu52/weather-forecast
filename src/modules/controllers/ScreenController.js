@@ -68,6 +68,7 @@ const ScreenController = () => {
 
         // Attach listeners
         _handleInputPressEnter();
+        _handleClickSearchButton();
 
         // Fetch data for the first time
         const data = await apiController.getData({ location: "Ho Chi Minh City" });
@@ -76,27 +77,6 @@ const ScreenController = () => {
         } else {
             _populateData({ data: data });
         }
-    };
-
-    // Detect when user presses enter in search bar
-    const _handleInputPressEnter = async () => {
-        const input = document.querySelector(".search-bar input");
-        const errorSpan = document.querySelector(".error-span");
-        input.addEventListener("keyup", async (event) => {
-            if (event.keyCode === 13) {
-                errorSpan.textContent = "";
-                if (input.value.trim() === "") {
-                    errorSpan.textContent = "Please enter a valid city's name.";
-                } else {
-                    const data = await apiController.getData({ location: input.value.trim() });
-                    if (data === null || data.hasOwnProperty("error")) {
-                        errorSpan.textContent = "Cannot find location."
-                    } else {
-                        _populateData({ data: data });
-                    }
-                }
-            }
-        });
     };
 
     const _populateData = ({ data }) => {
@@ -194,7 +174,7 @@ const ScreenController = () => {
         }
 
         // Add the card for today
-        const todayCard = createDayForecastCard({dateString: data.forecast.forecastday["0"].date, temp: data.forecast.forecastday["0"].day.avgtemp_c, imageURL: data.forecast.forecastday["0"].day.condition.icon});
+        const todayCard = createDayForecastCard({ dateString: data.forecast.forecastday["0"].date, temp: data.forecast.forecastday["0"].day.avgtemp_c, imageURL: data.forecast.forecastday["0"].day.condition.icon });
         todayCard.classList.add("day-card-active");
         dayCardsWrapper.appendChild(todayCard);
 
@@ -202,10 +182,45 @@ const ScreenController = () => {
         for (let i = 1; i < 14; i++) {
             if (data.forecast.forecastday.hasOwnProperty(i.toString())) {
                 const dayData = data.forecast.forecastday[i.toString()];
-                const card = createDayForecastCard({dateString: dayData.date, temp: dayData.day.avgtemp_c, imageURL: dayData.day.condition.icon});
+                const card = createDayForecastCard({ dateString: dayData.date, temp: dayData.day.avgtemp_c, imageURL: dayData.day.condition.icon });
                 dayCardsWrapper.appendChild(card);
             }
         }
+    };
+
+    const _handleInput = async () => {
+        const input = document.querySelector(".search-bar input");
+        const errorSpan = document.querySelector(".error-span");
+        errorSpan.textContent = "";
+                if (input.value.trim() === "") {
+                    errorSpan.textContent = "Please enter a valid city's name.";
+                } else {
+                    const data = await apiController.getData({ location: input.value.trim() });
+                    if (data === null || data.hasOwnProperty("error")) {
+                        errorSpan.textContent = "Cannot find location."
+                    } else {
+                        _populateData({ data: data });
+                    }
+                }
+    };
+
+    // Detect when user presses enter in search bar
+    const _handleInputPressEnter = () => {
+        const input = document.querySelector(".search-bar input");
+        input.addEventListener("keyup", (event) => {
+            if (event.keyCode === 13) {
+                _handleInput();
+            }
+        });
+    };
+
+    // Detect when user clicks the search button in search bar
+    const _handleClickSearchButton = () => {
+        const searchButton = document.querySelector(".search-bar .search-icon");
+        searchButton.addEventListener("click", () => {
+            console.log("clicked");
+            _handleInput();
+        });
     };
 
     return {
