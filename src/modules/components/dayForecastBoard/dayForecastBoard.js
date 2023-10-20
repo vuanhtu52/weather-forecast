@@ -26,13 +26,13 @@ const createDayForecastBoard = () => {
     const cards = document.createElement("div");
     cards.className = "cards";
 
-    for (let i = 0; i < 14; i++) {
-        const card = createDayForecastCard();
-        if (i === 0) {
-            card.classList.add("day-card-active");
-        }
-        cards.appendChild(card);
-    }
+    // for (let i = 0; i < 14; i++) {
+    //     const card = createDayForecastCard();
+    //     if (i === 0) {
+    //         card.classList.add("day-card-active");
+    //     }
+    //     cards.appendChild(card);
+    // }
 
     board.appendChild(cards);
 

@@ -22,6 +22,11 @@
     font-size: 30px;
 }
 
+.day-card img {
+    width: 70px;
+    height: 70px;
+}
+
 .day-card-active {
     background-color: rgba(245, 245, 245, 0.1);
 }

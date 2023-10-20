@@ -1,5 +1,6 @@
 import LogoIconLink from "../../assets/logo.svg";
 import createDayForecastBoard from "../components/dayForecastBoard/dayForecastBoard";
+import createDayForecastCard from "../components/dayForecastCard/dayForecastCard";
 import createHourForecastBoard from "../components/hourForecastBoard/hourForecastBoard";
 import createHourForecastCard from "../components/hourForecastCard/hourForecastCard";
 import createSearchBar from "../components/searchBar/searchBar";
@@ -184,6 +185,26 @@ const ScreenController = () => {
             const hourData = data.forecast.forecastday["1"].hour[i.toString()];
             const card = createHourForecastCard({ hour: hourData.time.split(" ")[1], temp: hourData.temp_c, imageURL: hourData.condition.icon });
             hourCardsWrapper.appendChild(card);
+        }
+
+        // Populate data in 14-day forecast board
+        const dayCardsWrapper = document.querySelector(".day-board .cards");
+        while (dayCardsWrapper.lastChild) {
+            dayCardsWrapper.removeChild(dayCardsWrapper.lastChild);
+        }
+
+        // Add the card for today
+        const todayCard = createDayForecastCard({dateString: data.forecast.forecastday["0"].date, temp: data.forecast.forecastday["0"].day.avgtemp_c, imageURL: data.forecast.forecastday["0"].day.condition.icon});
+        todayCard.classList.add("day-card-active");
+        dayCardsWrapper.appendChild(todayCard);
+
+        // Add the cards for the remaining days
+        for (let i = 1; i < 14; i++) {
+            if (data.forecast.forecastday.hasOwnProperty(i.toString())) {
+                const dayData = data.forecast.forecastday[i.toString()];
+                const card = createDayForecastCard({dateString: dayData.date, temp: dayData.day.avgtemp_c, imageURL: dayData.day.condition.icon});
+                dayCardsWrapper.appendChild(card);
+            }
         }
     };
 
