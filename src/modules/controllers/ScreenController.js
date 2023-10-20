@@ -202,6 +202,7 @@ const ScreenController = () => {
     };
 
     const _handleInput = async () => {
+        _showLoader();
         const input = document.querySelector(".search-bar input");
         const errorSpan = document.querySelector(".error-span");
         errorSpan.textContent = "";
@@ -215,6 +216,17 @@ const ScreenController = () => {
                         _populateData({ data: data });
                     }
                 }
+                _hideLoader();
+    };
+
+    const _showLoader = () => {
+        const loader = document.querySelector(".left-section .loader");
+        loader.style.display = "block";
+    };
+
+    const _hideLoader = () => {
+        const loader = document.querySelector(".left-section .loader");
+        loader.style.display = "none";
     };
 
     // Detect when user presses enter in search bar

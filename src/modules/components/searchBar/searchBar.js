@@ -1,6 +1,7 @@
 import "./searchBar.css";
 import MapIconLink from "../../../assets/map-marker.svg";
 import SearchIconLink from "../../../assets/search.svg";
+import createLoader from "../loader/loader";
 
 const createSearchBar = () => {
     // Add search bar
@@ -17,6 +18,10 @@ const createSearchBar = () => {
     const input = document.createElement("input");
     input.type = "text";
     searchBar.appendChild(input);
+
+    // Add loader
+    const loader = createLoader();
+    searchBar.appendChild(loader);
 
     // Add search icon
     const searchIcon = new Image();
